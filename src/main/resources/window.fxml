@@ -1,0 +1,803 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+
+<AnchorPane id="AnchorPane" prefHeight="950.0" prefWidth="900.0" xmlns="javafx.com/javafx" xmlns:fx="javafx.com/fxml/1" fx:controller="xls.WindowController">
+    <children>
+        <VBox alignment="CENTER" prefHeight="950.0" prefWidth="900.0" AnchorPane.leftAnchor="0.0">
+            <children>
+                <AnchorPane prefWidth="900.0">
+                    <children>
+                        <VBox prefHeight="70.0" prefWidth="780.0" spacing="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+                            <children>
+                                <Label text="Plik xls:">
+                                    <VBox.margin>
+                                        <Insets top="5.0" />
+                                    </VBox.margin>
+                                </Label>
+                                <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                    <children>
+                                        <TextField fx:id="nazwaPliku" editable="false" prefHeight="27.0" prefWidth="609.0">
+                                            <tooltip>
+                                                <Tooltip fx:id="pokazCalaSciezke" text="nie wybrano pliku" />
+                                            </tooltip>
+                                        </TextField>
+                                        <Button mnemonicParsing="false" onMouseClicked="#setFile" text="Ustaw plik xls" />
+                                        <Button fx:id="loadData" mnemonicParsing="false" onAction="#loadAllData" text="Załaduj dane" />
+                                    </children>
+                                </HBox>
+                            </children>
+                            <padding>
+                                <Insets left="20.0" right="20.0" />
+                            </padding>
+                        </VBox>
+                    </children>
+                    <VBox.margin>
+                        <Insets bottom="5.0" top="5.0" />
+                    </VBox.margin>
+                </AnchorPane>
+                <TabPane prefHeight="950.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE">
+                    <tabs>
+                        <Tab text="Teksty">
+                            <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="950.0" prefWidth="900.0">
+                                    <children>
+                                        <VBox maxHeight="-Infinity" prefHeight="850.0" prefWidth="860.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="0.0">
+                                            <children>
+                                                <AnchorPane prefHeight="800.0" prefWidth="860.0">
+                                                    <children>
+                                                        <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="500.0" spacing="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+                                                            <children>
+                                                                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="500.0" spacing="10.0">
+                                                                    <children>
+                                                                        <Label fx:id="zakladkaTekstyLabel" text="Zakładka:">
+                                                                            <HBox.margin>
+                                                                                <Insets />
+                                                                            </HBox.margin>
+                                                                        </Label>
+                                                                        <ChoiceBox fx:id="zakladkaTeksty" prefWidth="200.0" />
+                                                                    </children>
+                                                                </HBox>
+                                                            </children>
+                                                        </HBox>
+                                                        <VBox layoutY="50.0" maxHeight="-Infinity" prefHeight="750.0" prefWidth="840.0" spacing="5.0" AnchorPane.leftAnchor="10.0">
+                                                            <children>
+                                                                <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0" spacing="10.0">
+                                                                    <children>
+                                                                        <Label text="Nazwa handlowa:">
+                                                                            <HBox.margin>
+                                                                                <Insets bottom="7.0" left="5.0" />
+                                                                            </HBox.margin>
+                                                                        </Label>
+                                                                        <ChoiceBox fx:id="kolumnaNazwaGlowna" prefWidth="20.0">
+                                                                            <HBox.margin>
+                                                                                <Insets bottom="7.0" />
+                                                                            </HBox.margin>
+                                                                        </ChoiceBox>
+                                                                        <TextField fx:id="nazwaGlownaNr" prefHeight="20.0" prefWidth="40.0" text="4">
+                                                                            <HBox.margin>
+                                                                                <Insets bottom="7.0" />
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                        <TextArea fx:id="nazwaGlownaDescription" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="43.0" prefWidth="606.0" wrapText="true" />
+                                                                    </children>
+                                                                </HBox>
+                                                                <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0" spacing="12.0">
+                                                                    <children>
+                                                                        <Label prefHeight="17.0" prefWidth="69.0" text="Wyróżniki:">
+                                                                            <HBox.margin>
+                                                                                <Insets bottom="7.0" left="5.0" />
+                                                                            </HBox.margin>
+                                                                        </Label>
+                                                                        <ChoiceBox fx:id="kolumnaWyrozniki" prefWidth="20.0">
+                                                                            <HBox.margin>
+                                                                                <Insets bottom="7.0" />
+                                                                            </HBox.margin>
+                                                                        </ChoiceBox>
+                                                                        <TextField fx:id="wyroznikNr" prefHeight="20.0" prefWidth="40.0" text="5">
+                                                                            <HBox.margin>
+                                                                                <Insets bottom="7.0" />
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                        <TextArea fx:id="wyroznikDescription1" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="43.0" prefWidth="151.0" wrapText="true" />
+                                                                        <TextArea fx:id="wyroznikDescription2" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="43.0" prefWidth="151.0" wrapText="true" />
+                                                                        <TextArea fx:id="wyroznikDescription3" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="43.0" prefWidth="151.0" wrapText="true" />
+                                                                        <TextArea fx:id="wyroznikDescription4" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="43.0" prefWidth="150.0" wrapText="true" />
+                                                                    </children>
+                                                                </HBox>
+                                                                <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0" spacing="14.0">
+                                                                    <children>
+                                                                        <Label text="Piktogramy:">
+                                                                            <HBox.margin>
+                                                                                <Insets bottom="7.0" left="5.0" />
+                                                                            </HBox.margin>
+                                                                        </Label>
+                                                                        <ChoiceBox fx:id="kolumnaPiktogramyFejs" prefWidth="20.0">
+                                                                            <HBox.margin>
+                                                                                <Insets bottom="7.0" />
+                                                                            </HBox.margin>
+                                                                        </ChoiceBox>
+                                                                        <TextField fx:id="piktogramyFejsNr" prefHeight="20.0" prefWidth="40.0" text="6">
+                                                                            <HBox.margin>
+                                                                                <Insets bottom="7.0" />
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                        <ChoiceBox fx:id="piktogramFejsDescription1" prefHeight="27.0" prefWidth="200.0">
+                                                                            <HBox.margin>
+                                                                                <Insets bottom="7.0" />
+                                                                            </HBox.margin>
+                                                                        </ChoiceBox>
+                                                                        <ChoiceBox fx:id="piktogramFejsDescription2" prefHeight="27.0" prefWidth="200.0">
+                                                                            <HBox.margin>
+                                                                                <Insets bottom="7.0" />
+                                                                            </HBox.margin>
+                                                                        </ChoiceBox>
+                                                                        <ChoiceBox fx:id="piktogramFejsDescription3" prefHeight="27.0" prefWidth="200.0">
+                                                                            <HBox.margin>
+                                                                                <Insets bottom="7.0" />
+                                                                            </HBox.margin>
+                                                                        </ChoiceBox>
+                                                                    </children>
+                                                                </HBox>
+                                                                <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" prefHeight="40.0" prefWidth="200.0" spacing="10.0">
+                                                                    <children>
+                                                                        <Label text="Nazwa opisowa:">
+                                                                            <HBox.margin>
+                                                                                <Insets bottom="7.0" left="5.0" />
+                                                                            </HBox.margin>
+                                                                        </Label>
+                                                                        <ChoiceBox fx:id="kolumnaNazwaOpisowa" prefWidth="20.0">
+                                                                            <opaqueInsets>
+                                                                                <Insets />
+                                                                            </opaqueInsets>
+                                                                            <HBox.margin>
+                                                                                <Insets bottom="7.0" />
+                                                                            </HBox.margin>
+                                                                        </ChoiceBox>
+                                                                        <TextField fx:id="nazwaOpisowaNr" prefHeight="20.0" prefWidth="40.0" text="8">
+                                                                            <HBox.margin>
+                                                                                <Insets bottom="7.0" />
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                        <TextArea fx:id="nazwaOpisowaDescription" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="43.0" prefWidth="617.0" wrapText="true" />
+                                                                    </children>
+                                                                </HBox>
+                                                                <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="200.0" spacing="10.0">
+                                                                    <children>
+                                                                        <Label text="Składniki:">
+                                                                            <HBox.margin>
+                                                                                <Insets bottom="7.0" left="5.0" />
+                                                                            </HBox.margin>
+                                                                        </Label>
+                                                                        <ChoiceBox fx:id="kolumnaSkladniki" prefWidth="20.0">
+                                                                            <opaqueInsets>
+                                                                                <Insets />
+                                                                            </opaqueInsets>
+                                                                            <HBox.margin>
+                                                                                <Insets bottom="7.0" />
+                                                                            </HBox.margin>
+                                                                        </ChoiceBox>
+                                                                        <TextField fx:id="skladnikiNr" prefHeight="20.0" prefWidth="40.0" text="9">
+                                                                            <HBox.margin>
+                                                                                <Insets bottom="7.0" />
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                        <TextArea fx:id="skladnikiDescription" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="658.0" wrapText="true" />
+                                                                    </children>
+                                                                </HBox>
+                                                                <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0" spacing="10.0">
+                                                                    <children>
+                                                                        <Label text="Data i numer partii:">
+                                                                            <HBox.margin>
+                                                                                <Insets bottom="7.0" left="5.0" />
+                                                                            </HBox.margin>
+                                                                        </Label>
+                                                                        <ChoiceBox fx:id="kolumnaDataINrPartii" prefWidth="20.0">
+                                                                            <opaqueInsets>
+                                                                                <Insets />
+                                                                            </opaqueInsets>
+                                                                            <HBox.margin>
+                                                                                <Insets bottom="7.0" />
+                                                                            </HBox.margin>
+                                                                        </ChoiceBox>
+                                                                        <TextField fx:id="dataINrPartiiRowNr" prefHeight="20.0" prefWidth="40.0" text="10">
+                                                                            <HBox.margin>
+                                                                                <Insets bottom="7.0" />
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                        <ChoiceBox fx:id="dataINrPartiiDescription1" prefHeight="27.0" prefWidth="279.0">
+                                                                            <HBox.margin>
+                                                                                <Insets bottom="7.0" />
+                                                                            </HBox.margin>
+                                                                        </ChoiceBox>
+                                                                        <TextArea fx:id="dataINrPartiiDescription2" prefHeight="43.0" prefWidth="311.0" wrapText="true" />
+                                                                    </children>
+                                                                </HBox>
+                                                                <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0" spacing="10.0">
+                                                                    <children>
+                                                                        <Label text="Sposób przechowywania:">
+                                                                            <HBox.margin>
+                                                                                <Insets bottom="7.0" left="5.0" />
+                                                                            </HBox.margin>
+                                                                        </Label>
+                                                                        <ChoiceBox fx:id="kolumnaSposobPrzechowywania" prefWidth="20.0">
+                                                                            <opaqueInsets>
+                                                                                <Insets />
+                                                                            </opaqueInsets>
+                                                                            <HBox.margin>
+                                                                                <Insets bottom="7.0" />
+                                                                            </HBox.margin>
+                                                                        </ChoiceBox>
+                                                                        <TextField fx:id="sposobPrzechowywaniaRowNr" prefHeight="20.0" prefWidth="40.0" text="12">
+                                                                            <HBox.margin>
+                                                                                <Insets bottom="7.0" />
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                        <TextArea fx:id="sposobPrzechowywaniaDescription" prefHeight="43.0" prefWidth="560.0" wrapText="true" />
+                                                                    </children>
+                                                                </HBox>
+                                                                <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="380.0" spacing="10.0">
+                                                                    <children>
+                                                                        <Label text="Sposób przygotowania:">
+                                                                            <HBox.margin>
+                                                                                <Insets bottom="7.0" left="5.0" />
+                                                                            </HBox.margin>
+                                                                        </Label>
+                                                                        <ChoiceBox fx:id="kolumnaSposobPrzygotowania" prefWidth="20.0">
+                                                                            <opaqueInsets>
+                                                                                <Insets />
+                                                                            </opaqueInsets>
+                                                                            <HBox.margin>
+                                                                                <Insets bottom="7.0" />
+                                                                            </HBox.margin>
+                                                                        </ChoiceBox>
+                                                                        <TextField fx:id="sposobPrzygotowaniaRowNr" prefHeight="20.0" prefWidth="40.0" text="12">
+                                                                            <HBox.margin>
+                                                                                <Insets bottom="7.0" />
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                        <TextArea fx:id="sposobPrzygotowaniaDescription" prefHeight="43.0" prefWidth="572.0" wrapText="true" />
+                                                                    </children>
+                                                                </HBox>
+                                                                <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="200.0" spacing="10.0">
+                                                                    <children>
+                                                                        <Label text="Wyprodukowano przez:">
+                                                                            <HBox.margin>
+                                                                                <Insets bottom="7.0" left="5.0" />
+                                                                            </HBox.margin>
+                                                                        </Label>
+                                                                        <ChoiceBox fx:id="kolumnaProducent" prefWidth="20.0">
+                                                                            <opaqueInsets>
+                                                                                <Insets />
+                                                                            </opaqueInsets>
+                                                                            <HBox.margin>
+                                                                                <Insets bottom="7.0" />
+                                                                            </HBox.margin>
+                                                                        </ChoiceBox>
+                                                                        <TextField fx:id="producentNr" prefHeight="20.0" prefWidth="40.0" text="13">
+                                                                            <HBox.margin>
+                                                                                <Insets bottom="7.0" />
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                        <TextArea fx:id="producentDescription" prefHeight="80.0" prefWidth="572.0" wrapText="true" />
+                                                                    </children>
+                                                                </HBox>
+                                                                <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0" spacing="10.0">
+                                                                    <children>
+                                                                        <Label text="Gramatura:">
+                                                                            <HBox.margin>
+                                                                                <Insets bottom="7.0" left="5.0" />
+                                                                            </HBox.margin>
+                                                                        </Label>
+                                                                        <ChoiceBox fx:id="kolumnaGramatura" prefWidth="20.0">
+                                                                            <opaqueInsets>
+                                                                                <Insets />
+                                                                            </opaqueInsets>
+                                                                            <HBox.margin>
+                                                                                <Insets bottom="7.0" />
+                                                                            </HBox.margin>
+                                                                        </ChoiceBox>
+                                                                        <TextField fx:id="gramaturaNr" prefHeight="20.0" prefWidth="40.0" text="14">
+                                                                            <HBox.margin>
+                                                                                <Insets bottom="7.0" />
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                        <ChoiceBox fx:id="gramaturaDescription1" prefHeight="27.0" prefWidth="250.0">
+                                                                            <HBox.margin>
+                                                                                <Insets bottom="7.0" />
+                                                                            </HBox.margin>
+                                                                        </ChoiceBox>
+                                                                        <TextArea fx:id="gramaturaDescription2" prefHeight="43.0" prefWidth="169.0" wrapText="true" />
+                                                                        <TextArea fx:id="gramaturaDescription3" prefHeight="43.0" prefWidth="66.0" wrapText="true" />
+                                                                    </children>
+                                                                </HBox>
+                                                                <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="106.0" prefHeight="40.0" prefWidth="200.0" spacing="10.0">
+                                                                    <children>
+                                                                        <Label text="Materiał opakowaniowy:">
+                                                                            <HBox.margin>
+                                                                                <Insets bottom="7.0" left="5.0" />
+                                                                            </HBox.margin>
+                                                                        </Label>
+                                                                        <ChoiceBox fx:id="kolumnaTypOpakowania" prefWidth="20.0">
+                                                                            <HBox.margin>
+                                                                                <Insets bottom="7.0" />
+                                                                            </HBox.margin>
+                                                                        </ChoiceBox>
+                                                                        <TextField fx:id="typOpakowaniaNr" prefHeight="20.0" prefWidth="40.0" text="15">
+                                                                            <HBox.margin>
+                                                                                <Insets bottom="7.0" />
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                        <ChoiceBox fx:id="typOpakowaniaDescription1" prefHeight="27.0" prefWidth="100.0">
+                                                                            <HBox.margin>
+                                                                                <Insets bottom="7.0" />
+                                                                            </HBox.margin>
+                                                                        </ChoiceBox>
+                                                                        <ChoiceBox fx:id="typOpakowaniaDescription2" prefHeight="27.0" prefWidth="100.0">
+                                                                            <HBox.margin>
+                                                                                <Insets bottom="7.0" />
+                                                                            </HBox.margin>
+                                                                        </ChoiceBox>
+                                                                        <ChoiceBox fx:id="typOpakowaniaDescription3" prefHeight="27.0" prefWidth="100.0">
+                                                                            <HBox.margin>
+                                                                                <Insets bottom="7.0" />
+                                                                            </HBox.margin>
+                                                                        </ChoiceBox>
+                                                                        <ChoiceBox fx:id="typOpakowaniaDescription4" layoutX="508.0" layoutY="13.0" prefHeight="27.0" prefWidth="100.0">
+                                                                            <HBox.margin>
+                                                                                <Insets bottom="7.0" />
+                                                                            </HBox.margin>
+                                                                        </ChoiceBox>
+                                                                    </children>
+                                                                </HBox>
+                                                                <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" prefHeight="30.0" prefWidth="549.0" spacing="10.0">
+                                                                    <children>
+                                                                        <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" prefHeight="43.0" prefWidth="330.0" spacing="5.0">
+                                                                            <children>
+                                                                                <Label text="EAN:">
+                                                                                    <HBox.margin>
+                                                                                        <Insets bottom="7.0" left="5.0" />
+                                                                                    </HBox.margin>
+                                                                                </Label>
+                                                                                <ChoiceBox fx:id="kolumnaEAN" prefWidth="20.0">
+                                                                                    <HBox.margin>
+                                                                                        <Insets bottom="7.0" />
+                                                                                    </HBox.margin>
+                                                                                </ChoiceBox>
+                                                                                <TextField fx:id="EANNr" prefHeight="20.0" prefWidth="40.0" text="20">
+                                                                                    <HBox.margin>
+                                                                                        <Insets bottom="7.0" />
+                                                                                    </HBox.margin>
+                                                                                </TextField>
+                                                                                <TextArea fx:id="EANDescription" maxHeight="-Infinity" prefHeight="30.0" prefWidth="170.0" />
+                                                                            </children>
+                                                                        </HBox>
+                                                                        <HBox alignment="CENTER_RIGHT" prefHeight="43.0" prefWidth="491.0" spacing="5.0">
+                                                                            <children>
+                                                                                <Button fx:id="savePresets" mnemonicParsing="false" onAction="#writePresets" text="Zapisz ustawienia" />
+                                                                                <Button fx:id="saveDataFromTab1Btn" mnemonicParsing="false" onAction="#writeData" text="Zapisz dane" />
+                                                                            </children>
+                                                                        </HBox>
+                                                                    </children>
+                                                                </HBox>
+                                                            </children>
+                                                        </VBox>
+                                                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="142.0" layoutX="5.0" layoutY="45.0" mouseTransparent="true" stroke="#00000080" strokeType="INSIDE" width="850.0" />
+                                                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="820.0" mouseTransparent="true" stroke="#00000080" strokeType="INSIDE" width="860.0" />
+                                                    </children>
+                                                    <VBox.margin>
+                                                        <Insets />
+                                                    </VBox.margin>
+                                                </AnchorPane>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                    <padding>
+                                        <Insets top="5.0" />
+                                    </padding>
+                                </AnchorPane>
+                            </content>
+                        </Tab>
+                        <Tab text="Dane żywieniowe">
+                            <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="950.0" prefWidth="200.0">
+                                    <children>
+                                        <VBox maxHeight="-Infinity" prefHeight="850.0" prefWidth="760.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="0.0">
+                                            <children>
+                                                <AnchorPane prefHeight="800.0" prefWidth="760.0">
+                                                    <children>
+                                                        <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="500.0" spacing="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+                                                            <children>
+                                                                <Label fx:id="zakladkaOdzywczeLabel" text="Zakładka:">
+                                                                    <HBox.margin>
+                                                                        <Insets />
+                                                                    </HBox.margin>
+                                                                </Label>
+                                                                <ChoiceBox fx:id="zakladkaWartosciOdzywcze" prefWidth="250.0" />
+                                                            </children>
+                                                        </HBox>
+                                                        <VBox layoutY="50.0" maxHeight="-Infinity" prefHeight="750.0" prefWidth="831.0" spacing="20.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="60.0">
+                                                            <children>
+                                                                <HBox prefHeight="100.0" prefWidth="735.0" spacing="10.0">
+                                                                    <children>
+                                                                        <HBox prefHeight="100.0" prefWidth="388.0" spacing="10.0">
+                                                                            <children>
+                                                                                <Label prefHeight="17.0" prefWidth="58.0" text="Porcja:">
+                                                                                    <HBox.margin>
+                                                                                        <Insets top="17.0" />
+                                                                                    </HBox.margin>
+                                                                                </Label>
+                                                                                <HBox prefHeight="100.0" prefWidth="70.0">
+                                                                                    <children>
+                                                                                        <VBox alignment="TOP_CENTER" maxHeight="-Infinity" prefHeight="50.0" prefWidth="70.0">
+                                                                                            <children>
+                                                                                                <Label fx:id="kolumnaLiczbyPorcjiLabel" text="kolumna:" />
+                                                                                                <ChoiceBox fx:id="kolumnaLiczbyPorcji" prefWidth="65.0" />
+                                                                                            </children>
+                                                                                            <HBox.margin>
+                                                                                                <Insets />
+                                                                                            </HBox.margin>
+                                                                                        </VBox>
+                                                                                    </children>
+                                                                                </HBox>
+                                                                                <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+                                                                                    <children>
+                                                                                        <Label fx:id="liczbaPorcjiLabel" text="Liczba porcji:" />
+                                                                                        <HBox alignment="CENTER" prefHeight="20.0" prefWidth="200.0" spacing="5.0">
+                                                                                            <children>
+                                                                                                <Label fx:id="liczbaPorcjiWierszLabel" text="wiersz:" />
+                                                                                                <TextField fx:id="liczbaPorcjiNr" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="25.0" prefWidth="40.0" text="5" />
+                                                                                            </children>
+                                                                                        </HBox>
+                                                                                        <TextArea fx:id="liczbaPorcjiDescription" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="30.0" prefWidth="100.0" wrapText="true" />
+                                                                                    </children>
+                                                                                </VBox>
+                                                                                <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+                                                                                    <children>
+                                                                                        <Label fx:id="wielkoscPorcjiLabel" text="Wielkość porcji:" />
+                                                                                        <HBox alignment="CENTER" prefHeight="20.0" prefWidth="200.0" spacing="5.0">
+                                                                                            <children>
+                                                                                                <Label fx:id="wielkoscPorcjiWierszLabel" text="wiersz:" />
+                                                                                                <TextField fx:id="wielkoscPorcjiNr" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="25.0" prefWidth="40.0" text="3" />
+                                                                                            </children>
+                                                                                        </HBox>
+                                                                                        <TextArea fx:id="wielkoscPorcjiDescription" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="30.0" prefWidth="100.0" />
+                                                                                    </children>
+                                                                                </VBox>
+                                                                            </children>
+                                                                        </HBox>
+                                                                        <HBox prefHeight="100.0" prefWidth="430.0" spacing="10.0">
+                                                                            <children>
+                                                                                <VBox prefHeight="100.0" prefWidth="384.0" spacing="10.0">
+                                                                                    <children>
+                                                                                        <HBox alignment="BOTTOM_LEFT" spacing="10.0">
+                                                                                            <children>
+                                                                                                <Label text="Nazwa kolumny &quot;Wartość odżywcza...&quot;:">
+                                                                                                    <HBox.margin>
+                                                                                                        <Insets bottom="7.0" />
+                                                                                                    </HBox.margin>
+                                                                                                </Label>
+                                                                                                <ChoiceBox fx:id="kolumnaWartosc" prefWidth="65.0">
+                                                                                                    <HBox.margin>
+                                                                                                        <Insets />
+                                                                                                    </HBox.margin>
+                                                                                                </ChoiceBox>
+                                                                                                <TextField fx:id="wartoscNr" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="25.0" prefWidth="40.0" text="54">
+                                                                                                    <HBox.margin>
+                                                                                                        <Insets bottom="1.0" />
+                                                                                                    </HBox.margin>
+                                                                                                </TextField>
+                                                                                            </children>
+                                                                                        </HBox>
+                                                                                        <TextArea fx:id="wartoscDescription" prefHeight="32.0" prefWidth="384.0" />
+                                                                                    </children>
+                                                                                </VBox>
+                                                                            </children>
+                                                                        </HBox>
+                                                                    </children>
+                                                                </HBox>
+                                                                <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="540.0" spacing="10.0">
+                                                                    <children>
+                                                                        <Label alignment="CENTER" contentDisplay="CENTER" prefWidth="260.0" textAlignment="CENTER" />
+                                                                        <Label alignment="CENTER" contentDisplay="CENTER" prefWidth="40.0" textAlignment="CENTER" />
+                                                                        <VBox prefHeight="200.0" prefWidth="65.0">
+                                                                            <children>
+                                                                                <Label fx:id="kolumna100gOdzywczeLabel" alignment="CENTER" prefWidth="65.0" text="kolumna:" textAlignment="CENTER" />
+                                                                                <ChoiceBox fx:id="kolumnaOdzywcze100g" prefWidth="65.0" />
+                                                                            </children>
+                                                                        </VBox>
+                                                                        <VBox prefHeight="200.0" prefWidth="65.0">
+                                                                            <children>
+                                                                                <Label fx:id="kolumnaPortionOdzywczeLabel" alignment="CENTER" prefWidth="65.0" text="kolumna:" textAlignment="CENTER" />
+                                                                                <ChoiceBox fx:id="kolumnaOdzywczePortion" prefWidth="65.0" />
+                                                                            </children>
+                                                                        </VBox>
+                                                                        <VBox prefHeight="200.0" prefWidth="65.0">
+                                                                            <children>
+                                                                                <Label fx:id="kolumnaRWSOdzywczeLabel" alignment="CENTER" prefWidth="65.0" text="kolumna:" textAlignment="CENTER" />
+                                                                                <ChoiceBox fx:id="kolumnaOdzywczeRWS" prefWidth="65.0" />
+                                                                            </children>
+                                                                        </VBox>
+                                                                    </children>
+                                                                </HBox>
+                                                                <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="540.0" spacing="10.0">
+                                                                    <children>
+                                                                        <Label fx:id="naglowekWartosciOdzywczeLabel" alignment="CENTER" contentDisplay="CENTER" prefWidth="260.0" text="Wartości odżywcze" textAlignment="CENTER" />
+                                                                        <Label fx:id="naglowekWierszOdzywczeLabel" alignment="CENTER" contentDisplay="CENTER" prefWidth="40.0" text="wiersz" textAlignment="CENTER" />
+                                                                        <Label fx:id="naglowek100gOdzywczeLabel" alignment="CENTER" contentDisplay="CENTER" prefWidth="65.0" text="w 100 g" />
+                                                                        <Label fx:id="naglowekPortionOdzywczeLabel" alignment="CENTER" contentDisplay="CENTER" prefWidth="65.0" text="w porcji" />
+                                                                        <Label fx:id="naglowekRWSOdzywczeLabel" alignment="CENTER" contentDisplay="CENTER" prefWidth="65.0" text="\% RWS" />
+                                                                    </children>
+                                                                </HBox>
+                                                                <HBox alignment="CENTER_LEFT" prefHeight="20.0" prefWidth="540.0" spacing="10.0" VBox.vgrow="NEVER">
+                                                                    <children>
+                                                                        <Label fx:id="energiakJNameLabel" prefWidth="260.0" text="Wartość energetyczna [kJ]:" />
+                                                                        <TextField fx:id="energiakJNr" prefHeight="20.0" prefWidth="40.0" text="55">
+                                                                            <HBox.margin>
+                                                                                <Insets />
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                        <TextField fx:id="energiakJ100g" prefWidth="65.0">
+                                                                            <HBox.margin>
+                                                                                <Insets />
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                        <TextField fx:id="energiakJPortion" prefWidth="65.0">
+                                                                            <HBox.margin>
+                                                                                <Insets />
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                        <TextField fx:id="energiakJRWS" prefWidth="65.0">
+                                                                            <HBox.margin>
+                                                                                <Insets />
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                    </children>
+                                                                </HBox>
+                                                                <HBox alignment="CENTER_LEFT" prefHeight="20.0" prefWidth="540.0" spacing="10.0">
+                                                                    <children>
+                                                                        <Label fx:id="energiakcalNameLabel" prefWidth="260.0" text="Wartość energetyczna [kcal]:" />
+                                                                        <TextField fx:id="energiakcalNr" prefHeight="20.0" prefWidth="40.0" text="56">
+                                                                            <HBox.margin>
+                                                                                <Insets />
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                        <TextField fx:id="energiakcal100g" prefWidth="65.0">
+                                                                            <HBox.margin>
+                                                                                <Insets />
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                        <TextField fx:id="energiakcalPortion" prefWidth="65.0">
+                                                                            <HBox.margin>
+                                                                                <Insets />
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                        <TextField fx:id="energiakcalRWS" prefWidth="65.0">
+                                                                            <HBox.margin>
+                                                                                <Insets />
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                    </children>
+                                                                </HBox>
+                                                                <HBox alignment="CENTER_LEFT" prefHeight="20.0" prefWidth="540.0" spacing="10.0">
+                                                                    <children>
+                                                                        <Label fx:id="tluszczeNameLabel" prefWidth="260.0" text="Tłuszcz [g]:" />
+                                                                        <TextField fx:id="tluszczeNr" prefHeight="20.0" prefWidth="40.0" text="57">
+                                                                            <HBox.margin>
+                                                                                <Insets />
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                        <TextField fx:id="tluszcze100g" prefWidth="65.0">
+                                                                            <HBox.margin>
+                                                                                <Insets />
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                        <TextField fx:id="tluszczePortion" prefWidth="65.0">
+                                                                            <HBox.margin>
+                                                                                <Insets />
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                        <TextField fx:id="tluszczeRWS" prefWidth="65.0">
+                                                                            <HBox.margin>
+                                                                                <Insets />
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                    </children>
+                                                                </HBox>
+                                                                <HBox alignment="CENTER_LEFT" prefHeight="20.0" prefWidth="540.0" spacing="10.0">
+                                                                    <children>
+                                                                        <Label fx:id="kwasyNameLabel" prefWidth="240.0" text="w tym kwasy tłuszczowe nasycone [g]:">
+                                                                            <HBox.margin>
+                                                                                <Insets left="20.0" />
+                                                                            </HBox.margin>
+                                                                        </Label>
+                                                                        <TextField fx:id="kwasyNr" prefHeight="20.0" prefWidth="40.0" text="58">
+                                                                            <HBox.margin>
+                                                                                <Insets />
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                        <TextField fx:id="kwasy100g" prefWidth="65.0">
+                                                                            <HBox.margin>
+                                                                                <Insets />
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                        <TextField fx:id="kwasyPortion" prefWidth="65.0">
+                                                                            <HBox.margin>
+                                                                                <Insets />
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                        <TextField fx:id="kwasyRWS" prefWidth="65.0">
+                                                                            <HBox.margin>
+                                                                                <Insets />
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                    </children>
+                                                                </HBox>
+                                                                <HBox alignment="CENTER_LEFT" prefHeight="20.0" prefWidth="540.0" spacing="10.0">
+                                                                    <children>
+                                                                        <Label fx:id="weglowodanyNameLabel" prefWidth="260.0" text="Węglowodany [g]:" />
+                                                                        <TextField fx:id="weglowodanyNr" prefHeight="20.0" prefWidth="40.0" text="59">
+                                                                            <HBox.margin>
+                                                                                <Insets />
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                        <TextField fx:id="weglowodany100g" prefWidth="65.0">
+                                                                            <HBox.margin>
+                                                                                <Insets />
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                        <TextField fx:id="weglowodanyPortion" prefWidth="65.0">
+                                                                            <HBox.margin>
+                                                                                <Insets />
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                        <TextField fx:id="weglowodanyRWS" prefWidth="65.0">
+                                                                            <HBox.margin>
+                                                                                <Insets />
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                    </children>
+                                                                </HBox>
+                                                                <HBox alignment="CENTER_LEFT" prefHeight="20.0" prefWidth="540.0" spacing="10.0">
+                                                                    <children>
+                                                                        <Label fx:id="cukryNameLabel" prefWidth="240.0" text="w tym cukry [g]:">
+                                                                            <HBox.margin>
+                                                                                <Insets left="20.0" />
+                                                                            </HBox.margin>
+                                                                        </Label>
+                                                                        <TextField fx:id="cukryNr" prefHeight="20.0" prefWidth="40.0" text="60">
+                                                                            <HBox.margin>
+                                                                                <Insets />
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                        <TextField fx:id="cukry100g" prefWidth="65.0">
+                                                                            <HBox.margin>
+                                                                                <Insets />
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                        <TextField fx:id="cukryPortion" prefWidth="65.0">
+                                                                            <HBox.margin>
+                                                                                <Insets />
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                        <TextField fx:id="cukryRWS" prefWidth="65.0">
+                                                                            <HBox.margin>
+                                                                                <Insets />
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                    </children>
+                                                                </HBox>
+                                                                <HBox alignment="CENTER_LEFT" prefHeight="20.0" prefWidth="540.0" spacing="10.0">
+                                                                    <children>
+                                                                        <Label fx:id="blonnikNameLabel" prefWidth="260.0" text="Błonnik [g]:" />
+                                                                        <TextField fx:id="blonnikNr" prefHeight="20.0" prefWidth="40.0" text="61">
+                                                                            <HBox.margin>
+                                                                                <Insets />
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                        <TextField fx:id="blonnik100g" prefWidth="65.0">
+                                                                            <HBox.margin>
+                                                                                <Insets />
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                        <TextField fx:id="blonnikPortion" prefWidth="65.0">
+                                                                            <HBox.margin>
+                                                                                <Insets />
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                        <TextField fx:id="blonnikRWS" prefWidth="65.0">
+                                                                            <HBox.margin>
+                                                                                <Insets />
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                    </children>
+                                                                </HBox>
+                                                                <HBox alignment="CENTER_LEFT" prefHeight="20.0" prefWidth="540.0" spacing="10.0">
+                                                                    <children>
+                                                                        <Label fx:id="bialkoNameLabel" prefWidth="260.0" text="Białko [g]:" />
+                                                                        <TextField fx:id="bialkoNr" prefHeight="20.0" prefWidth="40.0" text="62">
+                                                                            <HBox.margin>
+                                                                                <Insets />
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                        <TextField fx:id="bialko100g" prefWidth="65.0">
+                                                                            <HBox.margin>
+                                                                                <Insets />
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                        <TextField fx:id="bialkoPortion" prefWidth="65.0">
+                                                                            <HBox.margin>
+                                                                                <Insets />
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                        <TextField fx:id="bialkoRWS" prefWidth="65.0">
+                                                                            <HBox.margin>
+                                                                                <Insets />
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                    </children>
+                                                                </HBox>
+                                                                <HBox alignment="CENTER_LEFT" prefHeight="20.0" prefWidth="540.0" spacing="10.0">
+                                                                    <children>
+                                                                        <Label fx:id="solNameLabel" prefWidth="260.0" text="Sól [g]:" />
+                                                                        <TextField fx:id="solNr" prefHeight="20.0" prefWidth="40.0" text="63">
+                                                                            <HBox.margin>
+                                                                                <Insets />
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                        <TextField fx:id="sol100g" prefWidth="65.0">
+                                                                            <HBox.margin>
+                                                                                <Insets />
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                        <TextField fx:id="solPortion" prefWidth="65.0">
+                                                                            <HBox.margin>
+                                                                                <Insets />
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                        <TextField fx:id="solRWS" prefWidth="65.0">
+                                                                            <HBox.margin>
+                                                                                <Insets />
+                                                                            </HBox.margin>
+                                                                        </TextField>
+                                                                    </children>
+                                                                </HBox>
+                                                                <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" prefHeight="30.0" prefWidth="827.0" spacing="10.0">
+                                                                    <children>
+                                                                        <Button fx:id="saveDataFromTab2Btn" mnemonicParsing="false" onAction="#writeData" text="Zapisz dane" />
+                                                                    </children>
+                                                                </HBox>
+                                                            </children>
+                                                        </VBox>
+                                                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="820.0" mouseTransparent="true" stroke="#00000080" strokeType="INSIDE" width="862.0" />
+                                                    </children>
+                                                    <VBox.margin>
+                                                        <Insets />
+                                                    </VBox.margin>
+                                                </AnchorPane>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                    <padding>
+                                        <Insets top="5.0" />
+                                    </padding></AnchorPane>
+                            </content>
+                        </Tab>
+                    </tabs>
+                </TabPane>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>
