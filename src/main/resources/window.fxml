@@ -13,8 +13,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="950.0" prefWidth="900.0" xmlns="javafx.com/javafx" xmlns:fx="javafx.com/fxml/1" fx:controller="xls.WindowController">
+<AnchorPane id="AnchorPane" prefHeight="950.0" prefWidth="900.0" styleClass="root" stylesheets="@xls_styles.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="xls.WindowController">
     <children>
         <VBox alignment="CENTER" prefHeight="950.0" prefWidth="900.0" AnchorPane.leftAnchor="0.0">
             <children>
@@ -26,6 +27,9 @@
                                     <VBox.margin>
                                         <Insets top="5.0" />
                                     </VBox.margin>
+                           <font>
+                              <Font name="Arial" size="13.0" />
+                           </font>
                                 </Label>
                                 <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                                     <children>
@@ -34,8 +38,14 @@
                                                 <Tooltip fx:id="pokazCalaSciezke" text="nie wybrano pliku" />
                                             </tooltip>
                                         </TextField>
-                                        <Button mnemonicParsing="false" onMouseClicked="#setFile" text="Ustaw plik xls" />
-                                        <Button fx:id="loadData" mnemonicParsing="false" onAction="#loadAllData" text="Załaduj dane" />
+                                        <Button mnemonicParsing="false" onMouseClicked="#setFile" text="Ustaw plik xls">
+                                 <font>
+                                    <Font name="Arial" size="13.0" />
+                                 </font></Button>
+                                        <Button fx:id="loadData" mnemonicParsing="false" onAction="#loadAllData" text="Załaduj dane">
+                                 <font>
+                                    <Font name="Arial" size="13.0" />
+                                 </font></Button>
                                     </children>
                                 </HBox>
                             </children>
@@ -66,6 +76,9 @@
                                                                             <HBox.margin>
                                                                                 <Insets />
                                                                             </HBox.margin>
+                                                         <font>
+                                                            <Font name="Arial" size="13.0" />
+                                                         </font>
                                                                         </Label>
                                                                         <ChoiceBox fx:id="zakladkaTeksty" prefWidth="200.0" />
                                                                     </children>
@@ -80,6 +93,9 @@
                                                                             <HBox.margin>
                                                                                 <Insets bottom="7.0" left="5.0" />
                                                                             </HBox.margin>
+                                                         <font>
+                                                            <Font name="Arial" size="13.0" />
+                                                         </font>
                                                                         </Label>
                                                                         <ChoiceBox fx:id="kolumnaNazwaGlowna" prefWidth="20.0">
                                                                             <HBox.margin>
@@ -90,8 +106,14 @@
                                                                             <HBox.margin>
                                                                                 <Insets bottom="7.0" />
                                                                             </HBox.margin>
+                                                         <font>
+                                                            <Font name="Arial" size="13.0" />
+                                                         </font>
                                                                         </TextField>
-                                                                        <TextArea fx:id="nazwaGlownaDescription" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="43.0" prefWidth="606.0" wrapText="true" />
+                                                                        <TextArea fx:id="nazwaGlownaDescription" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="43.0" prefWidth="606.0" wrapText="true">
+                                                         <font>
+                                                            <Font name="Arial" size="13.0" />
+                                                         </font></TextArea>
                                                                     </children>
                                                                 </HBox>
                                                                 <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0" spacing="12.0">
@@ -100,6 +122,9 @@
                                                                             <HBox.margin>
                                                                                 <Insets bottom="7.0" left="5.0" />
                                                                             </HBox.margin>
+                                                         <font>
+                                                            <Font name="Arial" size="13.0" />
+                                                         </font>
                                                                         </Label>
                                                                         <ChoiceBox fx:id="kolumnaWyrozniki" prefWidth="20.0">
                                                                             <HBox.margin>
@@ -110,11 +135,26 @@
                                                                             <HBox.margin>
                                                                                 <Insets bottom="7.0" />
                                                                             </HBox.margin>
+                                                         <font>
+                                                            <Font name="Arial" size="13.0" />
+                                                         </font>
                                                                         </TextField>
-                                                                        <TextArea fx:id="wyroznikDescription1" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="43.0" prefWidth="151.0" wrapText="true" />
-                                                                        <TextArea fx:id="wyroznikDescription2" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="43.0" prefWidth="151.0" wrapText="true" />
-                                                                        <TextArea fx:id="wyroznikDescription3" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="43.0" prefWidth="151.0" wrapText="true" />
-                                                                        <TextArea fx:id="wyroznikDescription4" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="43.0" prefWidth="150.0" wrapText="true" />
+                                                                        <TextArea fx:id="wyroznikDescription1" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="43.0" prefWidth="151.0" wrapText="true">
+                                                         <font>
+                                                            <Font name="Arial" size="13.0" />
+                                                         </font></TextArea>
+                                                                        <TextArea fx:id="wyroznikDescription2" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="43.0" prefWidth="151.0" wrapText="true">
+                                                         <font>
+                                                            <Font name="Arial" size="13.0" />
+                                                         </font></TextArea>
+                                                                        <TextArea fx:id="wyroznikDescription3" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="43.0" prefWidth="151.0" wrapText="true">
+                                                         <font>
+                                                            <Font name="Arial" size="13.0" />
+                                                         </font></TextArea>
+                                                                        <TextArea fx:id="wyroznikDescription4" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="43.0" prefWidth="150.0" wrapText="true">
+                                                         <font>
+                                                            <Font name="Arial" size="13.0" />
+                                                         </font></TextArea>
                                                                     </children>
                                                                 </HBox>
                                                                 <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0" spacing="14.0">
@@ -123,6 +163,9 @@
                                                                             <HBox.margin>
                                                                                 <Insets bottom="7.0" left="5.0" />
                                                                             </HBox.margin>
+                                                         <font>
+                                                            <Font name="Arial" size="13.0" />
+                                                         </font>
                                                                         </Label>
                                                                         <ChoiceBox fx:id="kolumnaPiktogramyFejs" prefWidth="20.0">
                                                                             <HBox.margin>
@@ -133,6 +176,9 @@
                                                                             <HBox.margin>
                                                                                 <Insets bottom="7.0" />
                                                                             </HBox.margin>
+                                                         <font>
+                                                            <Font name="Arial" size="13.0" />
+                                                         </font>
                                                                         </TextField>
                                                                         <ChoiceBox fx:id="piktogramFejsDescription1" prefHeight="27.0" prefWidth="200.0">
                                                                             <HBox.margin>
@@ -157,6 +203,9 @@
                                                                             <HBox.margin>
                                                                                 <Insets bottom="7.0" left="5.0" />
                                                                             </HBox.margin>
+                                                         <font>
+                                                            <Font name="Arial" size="13.0" />
+                                                         </font>
                                                                         </Label>
                                                                         <ChoiceBox fx:id="kolumnaNazwaOpisowa" prefWidth="20.0">
                                                                             <opaqueInsets>
@@ -170,8 +219,14 @@
                                                                             <HBox.margin>
                                                                                 <Insets bottom="7.0" />
                                                                             </HBox.margin>
+                                                         <font>
+                                                            <Font name="Arial" size="13.0" />
+                                                         </font>
                                                                         </TextField>
-                                                                        <TextArea fx:id="nazwaOpisowaDescription" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="43.0" prefWidth="617.0" wrapText="true" />
+                                                                        <TextArea fx:id="nazwaOpisowaDescription" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="43.0" prefWidth="617.0" wrapText="true">
+                                                         <font>
+                                                            <Font name="Arial" size="13.0" />
+                                                         </font></TextArea>
                                                                     </children>
                                                                 </HBox>
                                                                 <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="200.0" spacing="10.0">
@@ -180,6 +235,9 @@
                                                                             <HBox.margin>
                                                                                 <Insets bottom="7.0" left="5.0" />
                                                                             </HBox.margin>
+                                                         <font>
+                                                            <Font name="Arial" size="13.0" />
+                                                         </font>
                                                                         </Label>
                                                                         <ChoiceBox fx:id="kolumnaSkladniki" prefWidth="20.0">
                                                                             <opaqueInsets>
@@ -193,8 +251,14 @@
                                                                             <HBox.margin>
                                                                                 <Insets bottom="7.0" />
                                                                             </HBox.margin>
+                                                         <font>
+                                                            <Font name="Arial" size="13.0" />
+                                                         </font>
                                                                         </TextField>
-                                                                        <TextArea fx:id="skladnikiDescription" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="658.0" wrapText="true" />
+                                                                        <TextArea fx:id="skladnikiDescription" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="658.0" wrapText="true">
+                                                         <font>
+                                                            <Font name="Arial" size="13.0" />
+                                                         </font></TextArea>
                                                                     </children>
                                                                 </HBox>
                                                                 <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0" spacing="10.0">
@@ -386,6 +450,7 @@
                                                                         </HBox>
                                                                         <HBox alignment="CENTER_RIGHT" prefHeight="43.0" prefWidth="491.0" spacing="5.0">
                                                                             <children>
+                                                            <Button fx:id="loadPresets" mnemonicParsing="false" onAction="#readPresets" text="Załaduj ustawienia" />
                                                                                 <Button fx:id="savePresets" mnemonicParsing="false" onAction="#writePresets" text="Zapisz ustawienia" />
                                                                                 <Button fx:id="saveDataFromTab1Btn" mnemonicParsing="false" onAction="#writeData" text="Zapisz dane" />
                                                                             </children>
@@ -461,10 +526,10 @@
                                                                                                 <TextField fx:id="liczbaPorcjiNr" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="25.0" prefWidth="40.0" text="5" />
                                                                                             </children>
                                                                                         </HBox>
-                                                                                        <TextArea fx:id="liczbaPorcjiDescription" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="30.0" prefWidth="100.0" wrapText="true" />
+                                                                                        <TextArea fx:id="liczbaPorcjiDescription" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="50.0" prefWidth="100.0" wrapText="true" />
                                                                                     </children>
                                                                                 </VBox>
-                                                                                <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+                                                                                <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="130.0" spacing="5.0">
                                                                                     <children>
                                                                                         <Label fx:id="wielkoscPorcjiLabel" text="Wielkość porcji:" />
                                                                                         <HBox alignment="CENTER" prefHeight="20.0" prefWidth="200.0" spacing="5.0">
@@ -473,7 +538,7 @@
                                                                                                 <TextField fx:id="wielkoscPorcjiNr" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="25.0" prefWidth="40.0" text="3" />
                                                                                             </children>
                                                                                         </HBox>
-                                                                                        <TextArea fx:id="wielkoscPorcjiDescription" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="30.0" prefWidth="100.0" />
+                                                                                        <TextArea fx:id="wielkoscPorcjiDescription" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="50.0" prefWidth="130.0" />
                                                                                     </children>
                                                                                 </VBox>
                                                                             </children>

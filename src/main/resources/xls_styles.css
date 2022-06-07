@@ -1,0 +1,23 @@
+.label {
+    -fx-font-size: 13px;
+    -fx-font-family: Arial;
+    -fx-font-weight: regular;
+}
+
+.button {
+    -fx-font-size: 13px;
+    -fx-font-family: Arial;
+    -fx-font-weight: regular;
+}
+
+.text-input {
+    -fx-font-size: 13px;
+    -fx-font-family: Arial;
+    -fx-font-weight: regular;
+}
+
+.tab {
+    -fx-font-size: 13px;
+    -fx-font-family: Arial;
+    -fx-font-weight: regular;
+}

@@ -88,6 +88,14 @@ public class DataSet<T>{
         return columnNumber.getSelectionModel().getSelectedIndex() + shiftColumn;
     }
 
+    public void setColumnNumber(int numberOfColumn){
+        columnNumber.getSelectionModel().select(numberOfColumn);
+    }
+
+    public void setColumnNumberIncludeShiftColumn(int numberOfColumn){
+        columnNumber.getSelectionModel().select(numberOfColumn - shiftColumn);
+    }
+
 
     @SuppressWarnings("unchecked")
     public void writeDesctription(String descriptionText) {

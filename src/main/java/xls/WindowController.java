@@ -11,6 +11,7 @@ import xls.model.*;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @SuppressWarnings("restriction")
@@ -179,6 +180,7 @@ public class WindowController<T> {
     @FXML private Button loadData;
     @FXML private Button saveDataFromTab2Btn;
     @FXML private Button savePresets;
+    @FXML private Button loadPresets;
 
     @FXML private Tooltip pokazCalaSciezke;
 
@@ -602,6 +604,10 @@ public class WindowController<T> {
         return outputText.toString();
     }
 
+    public static String[] stringToArray(String data){
+        return data.split("\t");
+    }
+
     @FXML private void writePresets() throws Exception{
         final FileChooser fileChooser = new FileChooser();
         fileChooser.setInitialDirectory(new File(System.getProperty("user.home"), "/Desktop"));
@@ -618,8 +624,6 @@ public class WindowController<T> {
                 columnRows.add("" + dataSet.getColumnNumber() + dataSet.getRowNumber());
             }
 
-            System.out.print("size = " + listDataSetOdzywcze.size());
-
             int[] tablica = new int[3];
             tablica[0] = kolumnaOdzywcze100g.getSelectionModel().getSelectedIndex();
             tablica[1] = kolumnaOdzywczePortion.getSelectionModel().getSelectedIndex();
@@ -634,143 +638,36 @@ public class WindowController<T> {
         }
     }
 
-    @FXML private void enableDisableFieldsTeksty() {
-//			zakladkaTekstyLabel.setDisable(false);
-//			zakladkaTeksty.setDisable(false);
-//
-//			loadDataFromTab1Btn.setDisable(false);
-//
-//			wielkoscPorcjiLabel.setDisable(false);
+    @FXML private void readPresets() throws Exception{
+        final FileChooser fileChooser = new FileChooser();
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.home"), "/Desktop"));
+        fileChooser.getExtensionFilters().add(new ExtensionFilter("text file", "*.txt"));
 
-        //if (dataTekstyLoaded) saveDataFromTab1Btn.setDisable(false);
+        final File file = fileChooser.showOpenDialog(stage);
 
-//			for (DataSet<T> dataSet : listDataSet) {
-//				dataSet.setDisableCheckBox(false);
-//				if (dataSet.isSelectedCheckBox()) {
-//					dataSet.setDisableTextFieldNr(false);
-//					dataSet.setDisableFieldDescription(false);
-//					dataSet.setDisableColumnNumber(false);
-//				}
-//				else {
-//					dataSet.setDisableTextFieldNr(true);
-//					dataSet.setDisableFieldDescription(true);
-//					dataSet.setDisableColumnNumber(true);
-//				}
-//			}
+        if (file != null) {
+            String txt = ReadWriteTools.readFile(file);
+            String[] table = stringToArray(txt);
+
+            System.out.println("Tablica z txt: " + Arrays.toString(table));
+
+            System.out.println("listDataSet.size(): " + listDataSet.size());
+
+            for (int i = 0; i < listDataSet.size(); i++){
+                System.out.println(Integer.parseInt(table[i].substring(0, 1)));
+
+                listDataSet.get(i).setColumnNumberIncludeShiftColumn(Integer.parseInt(table[i].substring(0, 1)));   ;//       .getSelectionModel().select(Integer.parseInt(table[i].substring(0, 1)));
+                System.out.println(listDataSet.get(i).toString());
+            }
+
+            kolumnaOdzywcze100g.getSelectionModel().select(Integer.parseInt(table[listDataSet.size()].substring(0, 1)));
+            kolumnaOdzywczePortion.getSelectionModel().select(Integer.parseInt(table[listDataSet.size() + 1*9].substring(0, 1)));
+            kolumnaOdzywczeRWS.getSelectionModel().select(Integer.parseInt(table[listDataSet.size() + 2*9].substring(0, 1)));
+
+        }
 
     }
 
-//	@FXML private void enableDisableFieldsOdzywcze() {
-//		if (wlaczDaneOdzywcze.isSelected()) {
-//
-//			liczbaPorcjiChk.setDisable(false);
-//
-//			zakladkaOdzywczeLabel.setDisable(false);
-//			zakladkaWartosciOdzywcze.setDisable(false);
-//
-//			kolumna100gOdzywczeLabel.setDisable(false);
-//			kolumnaPortionOdzywczeLabel.setDisable(false);
-//			kolumnaRWSOdzywczeLabel.setDisable(false);
-//			kolumnaOdzywcze100g.setDisable(false);
-//			kolumnaOdzywczePortion.setDisable(false);
-//			kolumnaOdzywczeRWS.setDisable(false);
-//
-//			naglowekWartosciOdzywczeLabel.setDisable(false);
-//			naglowekWierszOdzywczeLabel.setDisable(false);
-//			naglowek100gOdzywczeLabel.setDisable(false);
-//			naglowekPortionOdzywczeLabel.setDisable(false);
-//			naglowekRWSOdzywczeLabel.setDisable(false);
-//
-//			loadDataFromTab2Btn.setDisable(false);
-//
-//			if (dataOdzywczeLoaded) saveDataFromTab2Btn.setDisable(false);
-//
-//			for (DataSetValues dataSet : listDataSetOdzywcze) {
-//
-//				dataSet.setDisableLabelName(false);
-//				dataSet.setDisableTextFieldRowNumber(false);
-//				dataSet.setDisableTextFieldFor100g(false);
-//				dataSet.setDisableTextFieldForPortion(false);
-//				dataSet.setDisableTextFieldRWS(false);
-//			}
-//		}
-//		else {
-//			zakladkaOdzywczeLabel.setDisable(true);
-//			zakladkaWartosciOdzywcze.setDisable(true);
-//
-//			liczbaPorcjiChk.setDisable(true);
-//
-//			kolumna100gOdzywczeLabel.setDisable(true);
-//			kolumnaPortionOdzywczeLabel.setDisable(true);
-//			kolumnaRWSOdzywczeLabel.setDisable(true);
-//			kolumnaOdzywcze100g.setDisable(true);
-//			kolumnaOdzywczePortion.setDisable(true);
-//			kolumnaOdzywczeRWS.setDisable(true);
-//
-//			naglowekWartosciOdzywczeLabel.setDisable(true);
-//			naglowekWierszOdzywczeLabel.setDisable(true);
-//			naglowek100gOdzywczeLabel.setDisable(true);
-//			naglowekPortionOdzywczeLabel.setDisable(true);
-//			naglowekRWSOdzywczeLabel.setDisable(true);
-//
-//			saveDataFromTab2Btn.setDisable(true);
-//			loadDataFromTab2Btn.setDisable(true);
-//
-//			for (DataSetValues dataSet : listDataSetOdzywcze) {
-//				dataSet.setDisableLabelName(true);
-//				dataSet.setDisableTextFieldRowNumber(true);
-//				dataSet.setDisableTextFieldFor100g(true);
-//				dataSet.setDisableTextFieldForPortion(true);
-//				dataSet.setDisableTextFieldRWS(true);
-//			}
-//		}
-//	}
-
-    @FXML private void enableDisableTextFields(){
-
-//		for (DataSet<T> dataSet : listDataSet) {
-//			if (dataSet.isSelectedCheckBox()) {
-//				dataSet.setDisableTextFieldNr(false);
-//				dataSet.setDisableFieldDescription(false);
-//				dataSet.setDisableColumnNumber(false);
-//			}
-//			else {
-//				dataSet.setDisableTextFieldNr(true);
-//				dataSet.setDisableFieldDescription(true);
-//				dataSet.setDisableColumnNumber(true);
-//			}
-//		}
-
-//		if (liczbaPorcjiChk.isSelected()) {
-//			kolumnaLiczbyPorcjiLabel.setDisable(false);
-//			kolumnaLiczbyPorcji.setDisable(false);
-//
-//			liczbaPorcjiLabel.setDisable(false);
-//			liczbaPorcjiWierszLabel.setDisable(false);
-//			wielkoscPorcjiLabel.setDisable(false);
-//			wielkoscPorcjiWierszLabel.setDisable(false);
-//
-//			listDataPortion.stream().forEach(x -> {
-//				x.setDisableTextFieldNr(false);
-//				x.setDisableFieldDescription(false);
-//			});
-//
-//		}
-//		else {
-//			kolumnaLiczbyPorcjiLabel.setDisable(true);
-//			kolumnaLiczbyPorcji.setDisable(true);
-//
-//			liczbaPorcjiLabel.setDisable(true);
-//			liczbaPorcjiWierszLabel.setDisable(true);
-//			wielkoscPorcjiLabel.setDisable(true);
-//			wielkoscPorcjiWierszLabel.setDisable(true);
-//
-//			listDataPortion.stream().forEach(x -> {
-//				x.setDisableTextFieldNr(true);
-//				x.setDisableFieldDescription(true);
-//			});
-//		}
-    }
 
     @FXML private void applyColumns() {
 

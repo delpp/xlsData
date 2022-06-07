@@ -1,9 +1,8 @@
 package xls.model;
 
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.PrintStream;
+import java.io.*;
+import java.util.Scanner;
 
 public class ReadWriteTools {
     public static void saveFile(String fileName, String text){
@@ -13,5 +12,11 @@ public class ReadWriteTools {
         catch (IOException ex){
             ex.printStackTrace();
         };
+    }
+
+    public static String readFile(File file) throws FileNotFoundException {
+        String content = new Scanner(file).useDelimiter("\\Z").next();
+
+        return content;
     }
 }
