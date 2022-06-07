@@ -13,8 +13,6 @@ public class Main extends Application{
 
         AnchorPane anchorPane = viewLoader.getLayout();
 
-        //System.out.println(anchorPane.toString());
-
         Scene scene = new Scene(anchorPane);
         stage.setScene(scene);
 

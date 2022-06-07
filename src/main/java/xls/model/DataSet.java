@@ -84,6 +84,10 @@ public class DataSet<T>{
         else return 0;
     }
 
+    public void setRowNumber(String row){
+        rowNumber.setText(row);
+    }
+
     public int getColumnNumber() {
         return columnNumber.getSelectionModel().getSelectedIndex() + shiftColumn;
     }

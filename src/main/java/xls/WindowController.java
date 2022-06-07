@@ -590,8 +590,6 @@ public class WindowController<T> {
             String textDataRow = arrayToString(dataProduct);
             String dataToWrite = textNamesRow + "\nnnnnn" + textDataRow;
 
-            System.out.println("Dane pełne:" + dataToWrite);
-
             ReadWriteTools.saveFile(path.replaceAll(".xls",  ".txt"), dataToWrite);
         }
     }
@@ -621,7 +619,7 @@ public class WindowController<T> {
             ArrayList<String> columnRows = new ArrayList<>();
 
             for (DataSet dataSet : listDataSet) {
-                columnRows.add("" + dataSet.getColumnNumber() + dataSet.getRowNumber());
+                columnRows.add("" + dataSet.getColumnNumber() + "-" + dataSet.getRowNumber());
             }
 
             int[] tablica = new int[3];
@@ -631,7 +629,7 @@ public class WindowController<T> {
 
             for (int i = 0; i < 3; i++) {
                 for (DataSetValues dataSet : listDataSetOdzywcze) {
-                    columnRows.add("" + tablica[i] + dataSet.getRowNumber());
+                    columnRows.add("" + tablica[i] + "-" + dataSet.getRowNumber());
                 }
             }
             ReadWriteTools.saveFile(path, arrayToString(columnRows));
@@ -651,18 +649,18 @@ public class WindowController<T> {
 
             System.out.println("Tablica z txt: " + Arrays.toString(table));
 
-            System.out.println("listDataSet.size(): " + listDataSet.size());
-
             for (int i = 0; i < listDataSet.size(); i++){
-                System.out.println(Integer.parseInt(table[i].substring(0, 1)));
-
-                listDataSet.get(i).setColumnNumberIncludeShiftColumn(Integer.parseInt(table[i].substring(0, 1)));   ;//       .getSelectionModel().select(Integer.parseInt(table[i].substring(0, 1)));
-                System.out.println(listDataSet.get(i).toString());
+                listDataSet.get(i).setColumnNumberIncludeShiftColumn(Integer.parseInt(table[i].substring(0, table[i].indexOf("-"))));
+                listDataSet.get(i).setRowNumber(table[i].substring(table[i].indexOf("-")+1));
             }
 
-            kolumnaOdzywcze100g.getSelectionModel().select(Integer.parseInt(table[listDataSet.size()].substring(0, 1)));
-            kolumnaOdzywczePortion.getSelectionModel().select(Integer.parseInt(table[listDataSet.size() + 1*9].substring(0, 1)));
-            kolumnaOdzywczeRWS.getSelectionModel().select(Integer.parseInt(table[listDataSet.size() + 2*9].substring(0, 1)));
+            kolumnaOdzywcze100g.getSelectionModel().select(Integer.parseInt(table[listDataSet.size()].substring(0, table[listDataSet.size()].indexOf("-"))));
+            kolumnaOdzywczePortion.getSelectionModel().select(Integer.parseInt(table[listDataSet.size() + 1*9].substring(0, table[listDataSet.size() + 1*9].indexOf("-"))));
+            kolumnaOdzywczeRWS.getSelectionModel().select(Integer.parseInt(table[listDataSet.size() + 2*9].substring(0, table[listDataSet.size() + 2*9].indexOf("-"))));
+
+            for (int i = 0; i < listDataSetOdzywcze.size(); i++){
+                listDataSetOdzywcze.get(i).setRowNumber(table[i + listDataSet.size()].substring(table[i + listDataSet.size()].indexOf("-") + 1));
+            }
 
         }
 

@@ -74,6 +74,10 @@ public class DataSetValues{
         else rowNumber = 0;
     }
 
+    public void setRowNumber(String row){
+        textFieldRowNumber.setText(row);
+    }
+
 
     public void setDisableTextFieldFor100g(boolean disable) {
         textFieldFor100g.setDisable(disable);
