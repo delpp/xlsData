@@ -11,7 +11,6 @@ import xls.model.*;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @SuppressWarnings("restriction")
@@ -181,6 +180,7 @@ public class WindowController<T> {
     @FXML private Button saveDataFromTab2Btn;
     @FXML private Button savePresets;
     @FXML private Button loadPresets;
+    @FXML private Button defaultPresets;
 
     @FXML private Tooltip pokazCalaSciezke;
 
@@ -475,9 +475,9 @@ public class WindowController<T> {
             dataSet.writeDesctription(daneProduktu);
         }
 
-        System.out.println("--------------------");
-        for (DataSet<T> dataSet : listDataSet) System.out.println("dataSet: " + dataSet.toString());
-        System.out.println("--------------------");
+//        System.out.println("--------------------");
+//        for (DataSet<T> dataSet : listDataSet) System.out.println("dataSet: " + dataSet.toString());
+//        System.out.println("--------------------");
 
         saveDataFromTab1Btn.setDisable(false);
     }
@@ -496,16 +496,12 @@ public class WindowController<T> {
         String daneProduktu;
         for (DataSetWithColumn<T> dataSet : listDataPortion) {
 
-
             daneProduktu = dataSet.readDescription();
 
             dataSet.writeDesctription(daneProduktu);
         }
 
         listDataSetOdzywcze.stream().forEach(x -> x.setRowNumber());
-
-
-        System.out.println("Sheet number: " + sheetNumber);
 
         ArrayList<ChoiceBox<String>> columns = new ArrayList<ChoiceBox<String>>();
 
@@ -516,7 +512,6 @@ public class WindowController<T> {
 
         for (ChoiceBox<String> choosedColumn : columns) {
             int columnNumberOdzywcze = choosedColumn.getSelectionModel().getSelectedIndex();
-            System.out.println("kolumna number: " + columnNumberOdzywcze);
 
             for (DataSetValues dataSetValues : listDataSetOdzywcze) {
                 if (dataSetValues.getRowNumber() < 1) daneProduktu = "-";
@@ -565,7 +560,6 @@ public class WindowController<T> {
                 textNameRows.add(dataSet.nameForRWS());
             }
 
-
             for (DataSet dataSet : listDataSet) {
                 dataProduct.add(dataSet.readDescriptionToSaveData());
             }
@@ -574,7 +568,6 @@ public class WindowController<T> {
                 if (dataSet.readDescription().equals("")) dataProduct.add("-");
                 else dataProduct.add(dataSet.readDescription());
             }
-
 
             for (ChoiceBox<String> choosedColumn : columns) {
                 for (DataSetValues dataSet : listDataSetOdzywcze) {
@@ -647,8 +640,6 @@ public class WindowController<T> {
             String txt = ReadWriteTools.readFile(file);
             String[] table = stringToArray(txt);
 
-            System.out.println("Tablica z txt: " + Arrays.toString(table));
-
             for (int i = 0; i < listDataSet.size(); i++){
                 listDataSet.get(i).setColumnNumberIncludeShiftColumn(Integer.parseInt(table[i].substring(0, table[i].indexOf("-"))));
                 listDataSet.get(i).setRowNumber(table[i].substring(table[i].indexOf("-")+1));
@@ -661,9 +652,25 @@ public class WindowController<T> {
             for (int i = 0; i < listDataSetOdzywcze.size(); i++){
                 listDataSetOdzywcze.get(i).setRowNumber(table[i + listDataSet.size()].substring(table[i + listDataSet.size()].indexOf("-") + 1));
             }
+        }
+    }
 
+    @FXML void resetPresets(){
+        String txt = "1-4\t1-5\t2-5\t3-5\t4-5\t1-6\t2-6\t3-6\t1-8\t1-9\t1-10\t3-10\t1-12\t3-12\t1-13\t0-14\t1-14\t4-14\t1-15\t2-15\t3-15\t4-15\t1-20\t1-5\t1-3\t0-54\t1-55\t1-56\t1-57\t1-58\t1-59\t1-60\t1-61\t1-62\t1-63\t2-55\t2-56\t2-57\t2-58\t2-59\t2-60\t2-61\t2-62\t2-63\t3-55\t3-56\t3-57\t3-58\t3-59\t3-60\t3-61\t3-62\t3-63\t";
+        String[] table = stringToArray(txt);
+
+        for (int i = 0; i < listDataSet.size(); i++){
+            listDataSet.get(i).setColumnNumberIncludeShiftColumn(Integer.parseInt(table[i].substring(0, table[i].indexOf("-"))));
+            listDataSet.get(i).setRowNumber(table[i].substring(table[i].indexOf("-")+1));
         }
 
+        kolumnaOdzywcze100g.getSelectionModel().select(Integer.parseInt(table[listDataSet.size()].substring(0, table[listDataSet.size()].indexOf("-"))));
+        kolumnaOdzywczePortion.getSelectionModel().select(Integer.parseInt(table[listDataSet.size() + 1*9].substring(0, table[listDataSet.size() + 1*9].indexOf("-"))));
+        kolumnaOdzywczeRWS.getSelectionModel().select(Integer.parseInt(table[listDataSet.size() + 2*9].substring(0, table[listDataSet.size() + 2*9].indexOf("-"))));
+
+        for (int i = 0; i < listDataSetOdzywcze.size(); i++){
+            listDataSetOdzywcze.get(i).setRowNumber(table[i + listDataSet.size()].substring(table[i + listDataSet.size()].indexOf("-") + 1));
+        }
     }
 
 

@@ -54,7 +54,5 @@ class AlertBox  {
 
         dialogPane.setPrefWidth(800);
 
-        //alert.getDialogPane().lookupButton(ButtonType.OK).setStyle("-fx-font-family: Arial; -fx-font-weight: regular;");
-
         return alert.showAndWait();
     } }

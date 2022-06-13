@@ -36,8 +36,8 @@ public class XLSFileTools {
 
         String data = "";
 
-        try {
-            FileInputStream file = new FileInputStream(imputFileName);
+        try (FileInputStream file = new FileInputStream(imputFileName);){
+
             Workbook workbook;
 
             Cell cell;
@@ -59,8 +59,6 @@ public class XLSFileTools {
             }
 
             workbook.close();
-            file.close();
-
         }
         catch (IOException ex){
             ex.printStackTrace();

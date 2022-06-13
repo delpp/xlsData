@@ -426,7 +426,7 @@
                                                                         </ChoiceBox>
                                                                     </children>
                                                                 </HBox>
-                                                                <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" prefHeight="30.0" prefWidth="549.0" spacing="10.0">
+                                                                <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" prefHeight="40.0" prefWidth="200.0" spacing="10.0">
                                                                     <children>
                                                                         <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" prefHeight="43.0" prefWidth="330.0" spacing="5.0">
                                                                             <children>
@@ -450,13 +450,18 @@
                                                                         </HBox>
                                                                         <HBox alignment="CENTER_RIGHT" prefHeight="43.0" prefWidth="491.0" spacing="5.0">
                                                                             <children>
-                                                            <Button fx:id="loadPresets" mnemonicParsing="false" onAction="#readPresets" text="Załaduj ustawienia" />
-                                                                                <Button fx:id="savePresets" mnemonicParsing="false" onAction="#writePresets" text="Zapisz ustawienia" />
                                                                                 <Button fx:id="saveDataFromTab1Btn" mnemonicParsing="false" onAction="#writeData" text="Zapisz dane" />
                                                                             </children>
                                                                         </HBox>
                                                                     </children>
                                                                 </HBox>
+                                                <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0" spacing="10.0">
+                                                   <children>
+                                                      <Button fx:id="loadPresets" mnemonicParsing="false" onAction="#readPresets" text="Załaduj ustawienia" />
+                                                                          <Button fx:id="savePresets" mnemonicParsing="false" onAction="#writePresets" text="Zapisz ustawienia" />
+                                                      <Button fx:id="defaultPresets" mnemonicParsing="false" onAction="#resetPresets" text="Ustawienia domyślne" />
+                                                   </children>
+                                                </HBox>
                                                             </children>
                                                         </VBox>
                                                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="142.0" layoutX="5.0" layoutY="45.0" mouseTransparent="true" stroke="#00000080" strokeType="INSIDE" width="850.0" />
